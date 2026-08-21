@@ -1,0 +1,28 @@
+# This file normally lives in ~/.dbt/profiles.yml, NOT in the repo (it can
+# hold credentials). It's included here, gitignored except this template,
+# so `make setup` can symlink/copy it into place. See README for the one-time
+# local setup step.
+#
+# Usage:
+#   dbt run                    -> uses `dev` target (DuckDB, local file, zero setup)
+#   dbt run --target cloud     -> uses `cloud` target (Postgres, real warehouse)
+
+museum_insights:
+  target: dev
+  outputs:
+
+    dev:
+      type: duckdb
+      path: "{{ env_var('DBT_DUCKDB_PATH', 'data/processed/warehouse.duckdb') }}"
+      threads: 4
+
+    cloud:
+      type: postgres
+      host: "{{ env_var('PG_HOST') }}"
+      port: "{{ env_var('PG_PORT', '5432') | as_number }}"
+      user: "{{ env_var('PG_USER') }}"
+      password: "{{ env_var('PG_PASSWORD') }}"
+      dbname: "{{ env_var('PG_DATABASE') }}"
+      schema: "{{ env_var('PG_SCHEMA', 'public') }}"
+      threads: 4
+      sslmode: require

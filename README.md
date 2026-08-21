@@ -10,6 +10,8 @@ Does NYC cultural funding have any influence on the art being acquired for publi
 
 ## Technology
 
+| Layer | Tool |
+|---|---|
 * Orchestration : Airflow
 * Transformation : dbt
 * Storage : DuckDB (local), Postgres (cloud)
@@ -18,20 +20,27 @@ Does NYC cultural funding have any influence on the art being acquired for publi
 
 ## Architechture
 
+
 ## Data Sources
 
+See ['docs/data_sources.md'](docs/data_sources.md) for a full inventory (source, granularity, update cadence)
 
 ## Directory
 
 museum_insights/
--- airflow/
--- dbt/
--- src/museum_insights/
--- sql/adhoc/
--- streamlit_app/
--- data/
--- docs/
--- notebooks/
+├── airflow/
+├── dbt/
+├── src/museum_insights/
+├── sql/adhoc/
+├── streamlit_app/
+├── data/
+├── docs/
+├── notebooks/
+
+## Getting Started
+
+## Running against Postgres vs DuckDB
+
 
 ## Roadmap
 
